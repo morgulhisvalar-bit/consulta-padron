@@ -12,49 +12,48 @@
       font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
       background: #f5f5f5;
       min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
 
-    /* ── HERO ── */
-    .hero {
+    /* ── TÍTULO TOP ── */
+    .top-titulo {
       background: #fff;
       text-align: center;
-      padding: 28px 16px 0;
+      padding: 28px 16px 20px;
       border-bottom: 4px solid #C62828;
     }
-
-    .hero-titulo {
-      font-size: 2.4rem;
+    .top-titulo h1 {
+      font-size: 2.6rem;
       font-weight: 900;
       color: #C62828;
-      line-height: 1.1;
+      line-height: 1.05;
       letter-spacing: -0.5px;
-      text-shadow: 0 2px 8px rgba(198,40,40,0.15);
+      text-shadow: 0 2px 10px rgba(198,40,40,0.15);
     }
-    .hero-subtitulo {
+    .top-titulo p {
       font-size: 0.9rem;
-      color: #666;
-      margin-top: 6px;
-      margin-bottom: 20px;
+      color: #888;
+      margin-top: 8px;
       font-weight: 400;
     }
 
-    .hero-img-wrap {
+    /* ── MAIN LAYOUT ── */
+    .main-layout {
       display: flex;
-      justify-content: center;
-    }
-    .hero-img-wrap img {
+      flex: 1;
+      max-width: 960px;
+      margin: 0 auto;
       width: 100%;
-      max-width: 360px;
-      display: block;
-      border-radius: 16px 16px 0 0;
-      object-fit: cover;
+      padding: 32px 20px 40px;
+      gap: 32px;
+      align-items: flex-start;
     }
 
-    /* ── CONTAINER ── */
-    .container {
-      max-width: 480px;
-      margin: 0 auto;
-      padding: 20px 16px 40px;
+    /* ── COLUMNA BÚSQUEDA ── */
+    .col-busqueda {
+      flex: 1;
+      min-width: 0;
     }
 
     .card {
@@ -63,7 +62,6 @@
       padding: 24px;
       box-shadow: 0 2px 12px rgba(0,0,0,0.08);
     }
-
     .card h2 {
       font-size: 1rem;
       color: #333;
@@ -145,7 +143,6 @@
       display: none;
       margin-top: 20px;
     }
-
     .badge-secc {
       display: inline-block;
       background: #C62828;
@@ -157,7 +154,6 @@
       letter-spacing: 0.5px;
       margin-bottom: 12px;
     }
-
     .nombre {
       font-size: 1.25rem;
       font-weight: 700;
@@ -169,7 +165,6 @@
       color: #999;
       margin-bottom: 20px;
     }
-
     .datos-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -202,7 +197,6 @@
       font-weight: 600;
       line-height: 1.4;
     }
-
     .alerta {
       background: #fff8e1;
       border: 1.5px solid #ffe082;
@@ -213,6 +207,18 @@
       line-height: 1.5;
     }
     .alerta b { color: #5d4500; }
+
+    /* ── COLUMNA IMAGEN ── */
+    .col-imagen {
+      width: 300px;
+      flex-shrink: 0;
+    }
+    .col-imagen img {
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+      display: block;
+    }
 
     /* ── BANNER INFERIOR ── */
     .banner-bottom {
@@ -231,78 +237,100 @@
       font-size: 0.72rem;
       color: #bbb;
       margin-top: 32px;
-      padding-bottom: 12px;
+      padding-bottom: 4px;
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 640px) {
+      .top-titulo h1 { font-size: 2rem; }
+      .main-layout {
+        flex-direction: column;
+        padding: 20px 16px 32px;
+        gap: 20px;
+      }
+      .col-imagen {
+        width: 100%;
+        max-width: 320px;
+        margin: 0 auto;
+        order: -1;
+      }
     }
   </style>
 </head>
 <body>
 
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-titulo">¿Sabés<br>donde votar?</div>
-  <p class="hero-subtitulo">Ingresá tu cédula y encontrá tu mesa al instante</p>
-  <div class="hero-img-wrap">
-    <img src="cynthia.jpg" alt="Cynthia Romero — Concejal Lista 2P Opción 5" />
-  </div>
+<!-- TÍTULO -->
+<div class="top-titulo">
+  <h1>¿Sabés<br>donde votar?</h1>
+  <p>Ingresá tu cédula y encontrá tu mesa al instante</p>
 </div>
 
-<div class="container">
-  <div class="card">
-    <h2>Ingresá tu número de cédula</h2>
-    <div class="input-group">
-      <input
-        id="cedula-input"
-        type="tel"
-        inputmode="numeric"
-        placeholder="Ej: 1234567"
-        maxlength="10"
-        autocomplete="off"
-      />
-      <button id="buscar-btn" onclick="buscar()">Buscar</button>
-    </div>
-    <p class="hint">Solo el número, sin puntos ni guiones</p>
-  </div>
+<!-- LAYOUT DOS COLUMNAS -->
+<div class="main-layout">
 
-  <div id="loading"><span class="spinner"></span>Buscando...</div>
-  <div id="error"></div>
-
-  <div id="resultado">
+  <!-- BÚSQUEDA -->
+  <div class="col-busqueda">
     <div class="card">
-      <span class="badge-secc" id="badge-secc"></span>
-      <div class="nombre" id="nombre"></div>
-      <div class="cedula-disp" id="cedula-disp"></div>
-
-      <div class="datos-grid">
-        <div class="dato">
-          <label>Seccional</label>
-          <span id="seccion"></span>
-        </div>
-        <div class="dato">
-          <label>Mesa</label>
-          <span id="mesa"></span>
-        </div>
-        <div class="dato">
-          <label>Orden</label>
-          <span id="orden"></span>
-        </div>
-        <div class="dato">
-          <label>Fecha de Nac.</label>
-          <span id="fecha"></span>
-        </div>
-        <div class="dato full">
-          <label>Local de Votación</label>
-          <span id="local"></span>
-        </div>
+      <h2>Ingresá tu número de cédula</h2>
+      <div class="input-group">
+        <input
+          id="cedula-input"
+          type="tel"
+          inputmode="numeric"
+          placeholder="Ej: 1234567"
+          maxlength="10"
+          autocomplete="off"
+        />
+        <button id="buscar-btn" onclick="buscar()">Buscar</button>
       </div>
+      <p class="hint">Solo el número, sin puntos ni guiones</p>
+    </div>
 
-      <div class="alerta">
-        📍 Presentate el día de la votación en el local indicado.<br>
-        Llevá tu <b>cédula de identidad vigente</b>.
+    <div id="loading"><span class="spinner"></span>Buscando...</div>
+    <div id="error"></div>
+
+    <div id="resultado">
+      <div class="card">
+        <span class="badge-secc" id="badge-secc"></span>
+        <div class="nombre" id="nombre"></div>
+        <div class="cedula-disp" id="cedula-disp"></div>
+        <div class="datos-grid">
+          <div class="dato">
+            <label>Seccional</label>
+            <span id="seccion"></span>
+          </div>
+          <div class="dato">
+            <label>Mesa</label>
+            <span id="mesa"></span>
+          </div>
+          <div class="dato">
+            <label>Orden</label>
+            <span id="orden"></span>
+          </div>
+          <div class="dato">
+            <label>Fecha de Nac.</label>
+            <span id="fecha"></span>
+          </div>
+          <div class="dato full">
+            <label>Local de Votación</label>
+            <span id="local"></span>
+          </div>
+        </div>
+        <div class="alerta">
+          📍 Presentate el día de la votación en el local indicado.<br>
+          Llevá tu <b>cédula de identidad vigente</b>.
+        </div>
       </div>
     </div>
+
+    <footer>Asociación Nacional Republicana · Capital · Lista 2P</footer>
   </div>
 
-  <footer>Asociación Nacional Republicana · Capital · Lista 2P</footer>
+  <!-- IMAGEN CANDIDATA -->
+  <div class="col-imagen">
+    <img src="cynthia.jpg" alt="Cynthia Romero — Concejal Lista 2P Opción 5" />
+  </div>
+
 </div>
 
 <!-- BANNER INFERIOR -->
@@ -325,14 +353,8 @@
 
   window.buscar = async function () {
     const cedula = input.value.trim().replace(/\D/g, '')
-    if (!cedula) {
-      mostrarError('Ingresá tu número de cédula.')
-      return
-    }
-    if (cedula.length < 5) {
-      mostrarError('La cédula parece muy corta. Verificá el número.')
-      return
-    }
+    if (!cedula) { mostrarError('Ingresá tu número de cédula.'); return }
+    if (cedula.length < 5) { mostrarError('La cédula parece muy corta. Verificá el número.'); return }
 
     ocultarTodo()
     document.getElementById('loading').style.display = 'block'
@@ -355,7 +377,6 @@
         )
         return
       }
-
       mostrarResultado(data)
     } catch (e) {
       document.getElementById('loading').style.display = 'none'
@@ -366,7 +387,6 @@
 
   function mostrarResultado (d) {
     const nombre = `${d.apellido ?? ''} ${d.nombre ?? ''}`.trim()
-
     document.getElementById('badge-secc').textContent  = `Seccional ${d.seccion}`
     document.getElementById('nombre').textContent      = nombre
     document.getElementById('cedula-disp').textContent = `Cédula: ${d.cedula}`
@@ -375,7 +395,6 @@
     document.getElementById('orden').textContent       = d.orden
     document.getElementById('fecha').textContent       = d.fecha_nac ?? '—'
     document.getElementById('local').textContent       = d.local_votacion ?? '—'
-
     document.getElementById('resultado').style.display = 'block'
     document.getElementById('resultado').scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
