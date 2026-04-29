@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Consulta de Padrón — Cynthia Romero</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f5f5f5;
+      min-height: 100vh;
+    }
+
+    header {
+      background: linear-gradient(135deg, #8B0000, #C62828);
+      color: white;
+      padding: 20px 16px 24px;
+      text-align: center;
+    }
+    header h1 { font-size: 1.3rem; font-weight: 700; letter-spacing: 0.3px; }
+    header p  { font-size: 0.8rem; opacity: 0.8; margin-top: 4px; }
+
+    .container {
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 20px 16px 40px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+
+    .card h2 {
+      font-size: 1rem;
+      color: #333;
+      margin-bottom: 16px;
+    }
+
+    .input-group {
+      display: flex;
+      gap: 8px;
+    }
+    .input-group input {
+      flex: 1;
+      padding: 13px 16px;
+      border: 1.5px solid #ddd;
+      border-radius: 12px;
+      font-size: 1rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .input-group input:focus { border-color: #C62828; }
+    .input-group button {
+      padding: 13px 20px;
+      background: #C62828;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+    .input-group button:hover  { background: #8B0000; }
+    .input-group button:active { background: #6a0000; }
+
+    .hint {
+      margin-top: 8px;
+      font-size: 0.75rem;
+      color: #999;
+    }
+
+    /* Estado de carga */
+    #loading {
+      display: none;
+      text-align: center;
+      padding: 24px 0 8px;
+      color: #888;
+      font-size: 0.9rem;
+    }
+    .spinner {
+      display: inline-block;
+      width: 22px; height: 22px;
+      border: 3px solid #eee;
+      border-top-color: #C62828;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Error */
+    #error {
+      display: none;
+      margin-top: 16px;
+      background: #fff5f5;
+      border: 1.5px solid #ffcdd2;
+      border-radius: 12px;
+      padding: 14px 16px;
+      color: #c62828;
+      font-size: 0.9rem;
+    }
+
+    /* Resultado */
+    #resultado {
+      display: none;
+      margin-top: 20px;
+    }
+
+    .badge-secc {
+      display: inline-block;
+      background: #C62828;
+      color: white;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 20px;
+      letter-spacing: 0.5px;
+      margin-bottom: 12px;
+    }
+
+    .nombre {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #111;
+      margin-bottom: 4px;
+    }
+    .cedula-disp {
+      font-size: 0.8rem;
+      color: #999;
+      margin-bottom: 20px;
+    }
+
+    .datos-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .dato {
+      background: #fafafa;
+      border: 1px solid #eee;
+      border-radius: 10px;
+      padding: 12px 14px;
+    }
+    .dato.full { grid-column: 1 / -1; }
+    .dato label {
+      display: block;
+      font-size: 0.65rem;
+      font-weight: 600;
+      color: #999;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+    .dato span {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #222;
+    }
+    .dato.full span {
+      font-size: 0.9rem;
+      font-weight: 600;
+      line-height: 1.4;
+    }
+
+    .alerta {
+      background: #fff8e1;
+      border: 1.5px solid #ffe082;
+      border-radius: 10px;
+      padding: 12px 14px;
+      font-size: 0.82rem;
+      color: #7c5f00;
+      line-height: 1.5;
+    }
+    .alerta b { color: #5d4500; }
+
+    footer {
+      text-align: center;
+      font-size: 0.72rem;
+      color: #bbb;
+      margin-top: 32px;
+      padding-bottom: 12px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Cynthia Romero — Lista 2P / Opción 5</h1>
+  <p>Consulta tus datos para el día de la elección · Distrito Capital</p>
+</header>
+
+<div class="container">
+  <div class="card">
+    <h2>Ingresá tu número de cédula</h2>
+    <div class="input-group">
+      <input
+        id="cedula-input"
+        type="tel"
+        inputmode="numeric"
+        placeholder="Ej: 1234567"
+        maxlength="10"
+        autocomplete="off"
+      />
+      <button id="buscar-btn" onclick="buscar()">Buscar</button>
+    </div>
+    <p class="hint">Solo el número, sin puntos ni guiones</p>
+  </div>
+
+  <div id="loading"><span class="spinner"></span>Buscando...</div>
+  <div id="error"></div>
+
+  <div id="resultado">
+    <div class="card">
+      <span class="badge-secc" id="badge-secc"></span>
+      <div class="nombre" id="nombre"></div>
+      <div class="cedula-disp" id="cedula-disp"></div>
+
+      <div class="datos-grid">
+        <div class="dato">
+          <label>Seccional</label>
+          <span id="seccion"></span>
+        </div>
+        <div class="dato">
+          <label>Mesa</label>
+          <span id="mesa"></span>
+        </div>
+        <div class="dato">
+          <label>Orden</label>
+          <span id="orden"></span>
+        </div>
+        <div class="dato">
+          <label>Fecha de Nac.</label>
+          <span id="fecha"></span>
+        </div>
+        <div class="dato full">
+          <label>Local de Votación</label>
+          <span id="local"></span>
+        </div>
+      </div>
+
+      <div class="alerta">
+        📍 Presentate el día de la votación en el local indicado.<br>
+        Llevá tu <b>cédula de identidad vigente</b>.
+      </div>
+    </div>
+  </div>
+
+  <footer>Asociación Nacional Republicana · Capital · Lista 2P</footer>
+</div>
+
+<script type="module">
+  import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
+
+  const SUPABASE_URL  = 'https://accokhakqbxmogyjznxi.supabase.co'
+  const SUPABASE_ANON = 'sb_publishable_l92oWb3HEaj_SMxwopsabw_hmZ5jpSC'
+  const supabase = createClient(SUPABASE_URL, SUPABASE_ANON)
+
+  const input   = document.getElementById('cedula-input')
+  const btnBusc = document.getElementById('buscar-btn')
+
+  // Enter key
+  input.addEventListener('keydown', e => { if (e.key === 'Enter') buscar() })
+
+  window.buscar = async function () {
+    const cedula = input.value.trim().replace(/\D/g, '')
+    if (!cedula) {
+      mostrarError('Ingresá tu número de cédula.')
+      return
+    }
+    if (cedula.length < 5) {
+      mostrarError('La cédula parece muy corta. Verificá el número.')
+      return
+    }
+
+    ocultarTodo()
+    document.getElementById('loading').style.display = 'block'
+    btnBusc.disabled = true
+
+    try {
+      const { data, error } = await supabase
+        .from('padron_publico')
+        .select('*')
+        .eq('cedula', cedula)
+        .single()
+
+      document.getElementById('loading').style.display = 'none'
+      btnBusc.disabled = false
+
+      if (error || !data) {
+        mostrarError(
+          `No se encontró la cédula <b>${cedula}</b> en el padrón electoral del Distrito Capital.<br><br>` +
+          'Verificá que el número esté bien escrito.'
+        )
+        return
+      }
+
+      mostrarResultado(data)
+    } catch (e) {
+      document.getElementById('loading').style.display = 'none'
+      btnBusc.disabled = false
+      mostrarError('Error de conexión. Verificá tu internet e intentá de nuevo.')
+    }
+  }
+
+  function mostrarResultado (d) {
+    const nombre = `${d.apellido ?? ''} ${d.nombre ?? ''}`.trim()
+
+    document.getElementById('badge-secc').textContent = `Seccional ${d.seccion}`
+    document.getElementById('nombre').textContent     = nombre
+    document.getElementById('cedula-disp').textContent = `Cédula: ${d.cedula}`
+    document.getElementById('seccion').textContent    = d.seccion
+    document.getElementById('mesa').textContent       = d.mesa
+    document.getElementById('orden').textContent      = d.orden
+    document.getElementById('fecha').textContent      = d.fecha_nac ?? '—'
+    document.getElementById('local').textContent      = d.local_votacion ?? '—'
+
+    document.getElementById('resultado').style.display = 'block'
+    document.getElementById('resultado').scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+
+  function mostrarError (msg) {
+    const el = document.getElementById('error')
+    el.innerHTML = '⚠️ ' + msg
+    el.style.display = 'block'
+  }
+
+  function ocultarTodo () {
+    document.getElementById('error').style.display     = 'none'
+    document.getElementById('resultado').style.display = 'none'
+  }
+</script>
+
+</body>
+</html>
