@@ -3,25 +3,54 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Consulta de Padrón — Cynthia Romero</title>
+  <title>¿Sabés donde votar? — Cynthia Romero</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet" />
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
       background: #f5f5f5;
       min-height: 100vh;
     }
 
-    header {
-      background: linear-gradient(135deg, #8B0000, #C62828);
-      color: white;
-      padding: 20px 16px 24px;
+    /* ── HERO ── */
+    .hero {
+      background: #fff;
       text-align: center;
+      padding: 28px 16px 0;
+      border-bottom: 4px solid #C62828;
     }
-    header h1 { font-size: 1.3rem; font-weight: 700; letter-spacing: 0.3px; }
-    header p  { font-size: 0.8rem; opacity: 0.8; margin-top: 4px; }
 
+    .hero-titulo {
+      font-size: 2.4rem;
+      font-weight: 900;
+      color: #C62828;
+      line-height: 1.1;
+      letter-spacing: -0.5px;
+      text-shadow: 0 2px 8px rgba(198,40,40,0.15);
+    }
+    .hero-subtitulo {
+      font-size: 0.9rem;
+      color: #666;
+      margin-top: 6px;
+      margin-bottom: 20px;
+      font-weight: 400;
+    }
+
+    .hero-img-wrap {
+      display: flex;
+      justify-content: center;
+    }
+    .hero-img-wrap img {
+      width: 100%;
+      max-width: 360px;
+      display: block;
+      border-radius: 16px 16px 0 0;
+      object-fit: cover;
+    }
+
+    /* ── CONTAINER ── */
     .container {
       max-width: 480px;
       margin: 0 auto;
@@ -39,6 +68,7 @@
       font-size: 1rem;
       color: #333;
       margin-bottom: 16px;
+      font-weight: 700;
     }
 
     .input-group {
@@ -51,6 +81,7 @@
       border: 1.5px solid #ddd;
       border-radius: 12px;
       font-size: 1rem;
+      font-family: inherit;
       outline: none;
       transition: border-color 0.2s;
     }
@@ -62,7 +93,8 @@
       border: none;
       border-radius: 12px;
       font-size: 0.95rem;
-      font-weight: 600;
+      font-weight: 700;
+      font-family: inherit;
       cursor: pointer;
       transition: background 0.2s;
       white-space: nowrap;
@@ -76,7 +108,7 @@
       color: #999;
     }
 
-    /* Estado de carga */
+    /* ── LOADING ── */
     #loading {
       display: none;
       text-align: center;
@@ -96,7 +128,7 @@
     }
     @keyframes spin { to { transform: rotate(360deg); } }
 
-    /* Error */
+    /* ── ERROR ── */
     #error {
       display: none;
       margin-top: 16px;
@@ -108,7 +140,7 @@
       font-size: 0.9rem;
     }
 
-    /* Resultado */
+    /* ── RESULTADO ── */
     #resultado {
       display: none;
       margin-top: 20px;
@@ -154,7 +186,7 @@
     .dato label {
       display: block;
       font-size: 0.65rem;
-      font-weight: 600;
+      font-weight: 700;
       color: #999;
       text-transform: uppercase;
       letter-spacing: 0.5px;
@@ -182,6 +214,18 @@
     }
     .alerta b { color: #5d4500; }
 
+    /* ── BANNER INFERIOR ── */
+    .banner-bottom {
+      background: linear-gradient(135deg, #8B0000, #C62828);
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+    }
+    .banner-bottom span { opacity: 0.8; font-weight: 400; }
+
     footer {
       text-align: center;
       font-size: 0.72rem;
@@ -193,10 +237,14 @@
 </head>
 <body>
 
-<header>
-  <h1>Cynthia Romero — Lista 2P / Opción 5</h1>
-  <p>Consulta tus datos para el día de la elección · Distrito Capital</p>
-</header>
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-titulo">¿Sabés<br>donde votar?</div>
+  <p class="hero-subtitulo">Ingresá tu cédula y encontrá tu mesa al instante</p>
+  <div class="hero-img-wrap">
+    <img src="cynthia.jpg" alt="Cynthia Romero — Concejal Lista 2P Opción 5" />
+  </div>
+</div>
 
 <div class="container">
   <div class="card">
@@ -257,6 +305,12 @@
   <footer>Asociación Nacional Republicana · Capital · Lista 2P</footer>
 </div>
 
+<!-- BANNER INFERIOR -->
+<div class="banner-bottom">
+  Cynthia Romero — Concejal &nbsp;·&nbsp; Lista 2P &nbsp;·&nbsp; Opción 5<br>
+  <span>Camilo Intendente · Lista 2 · Honor Colorado · #CapitalResurge</span>
+</div>
+
 <script type="module">
   import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
 
@@ -267,7 +321,6 @@
   const input   = document.getElementById('cedula-input')
   const btnBusc = document.getElementById('buscar-btn')
 
-  // Enter key
   input.addEventListener('keydown', e => { if (e.key === 'Enter') buscar() })
 
   window.buscar = async function () {
@@ -314,14 +367,14 @@
   function mostrarResultado (d) {
     const nombre = `${d.apellido ?? ''} ${d.nombre ?? ''}`.trim()
 
-    document.getElementById('badge-secc').textContent = `Seccional ${d.seccion}`
-    document.getElementById('nombre').textContent     = nombre
+    document.getElementById('badge-secc').textContent  = `Seccional ${d.seccion}`
+    document.getElementById('nombre').textContent      = nombre
     document.getElementById('cedula-disp').textContent = `Cédula: ${d.cedula}`
-    document.getElementById('seccion').textContent    = d.seccion
-    document.getElementById('mesa').textContent       = d.mesa
-    document.getElementById('orden').textContent      = d.orden
-    document.getElementById('fecha').textContent      = d.fecha_nac ?? '—'
-    document.getElementById('local').textContent      = d.local_votacion ?? '—'
+    document.getElementById('seccion').textContent     = d.seccion
+    document.getElementById('mesa').textContent        = d.mesa
+    document.getElementById('orden').textContent       = d.orden
+    document.getElementById('fecha').textContent       = d.fecha_nac ?? '—'
+    document.getElementById('local').textContent       = d.local_votacion ?? '—'
 
     document.getElementById('resultado').style.display = 'block'
     document.getElementById('resultado').scrollIntoView({ behavior: 'smooth', block: 'start' })
