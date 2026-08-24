@@ -4,35 +4,43 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>¿Sabés dónde votar? — Cynthia Romero</title>
-  <meta property="og:site_name"   content="Padrón Electoral" />
-  <meta property="og:title"       content="¿Sabés dónde votar?" />
-  <meta property="og:description" content="👇👇 Ingresá tu cédula y encontrá tu mesa al instante · Cynthia Romero Lista 1 Opción 17 · Candidata a Concejal de Asunción" />
-  <meta property="og:image"       content="https://dondevoto.netlify.app/og_share.jpg?v=13" />
-  <meta property="og:image:secure_url" content="https://dondevoto.netlify.app/og_share.jpg?v=13" />
+  <meta property="og:site_name"   content="Padrón Electoral Asunción" />
+  <meta property="og:title"       content="¿Sabés dónde votar? — Consulta Tu Padrón 2026" />
+  <meta property="og:description" content="👇 Ingresá tu cédula y encontrá tu mesa, orden y local de votación al instante · Cynthia Romero Lista 1 Opción 17 · Concejal Asunción" />
+  <meta property="og:image"       content="https://dondevoto.netlify.app/og_share.jpg?v=14" />
+  <meta property="og:image:secure_url" content="https://dondevoto.netlify.app/og_share.jpg?v=14" />
   <meta property="og:image:type"   content="image/jpeg" />
   <meta property="og:image:width"  content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:url"         content="https://dondevoto.netlify.app" />
   <meta property="og:type"        content="website" />
   <meta name="twitter:card"        content="summary_large_image" />
-  <meta name="twitter:title"       content="¿Sabés dónde votar?" />
-  <meta name="twitter:description" content="👇👇 Ingresá tu cédula y encontrá tu mesa al instante · Cynthia Romero Lista 1 Opción 17 · Candidata a Concejal de Asunción" />
-  <meta name="twitter:image"       content="https://dondevoto.netlify.app/og_share.jpg?v=13" />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet" />
+  <meta name="twitter:title"       content="¿Sabés dónde votar? — Cynthia Romero" />
+  <meta name="twitter:description" content="👇 Ingresá tu cédula y encontrá tu mesa, orden y local de votación al instante" />
+  <meta name="twitter:image"       content="https://dondevoto.netlify.app/og_share.jpg?v=14" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
     :root {
       --lila: #5A2982;
-      --lila-osc: #481D6B;
-      --lila-light: #fcf5ff;
+      --lila-osc: #441A66;
+      --lila-light: #F7F0FA;
+      --lila-border: #E8D3F3;
       --wsp-color: #25D366;
-      --wsp-hover: #1da851;
+      --wsp-hover: #1EA952;
+      --anr-red: #D32F2F;
+      --plra-blue: #1976D2;
+      --dark-text: #1E1B2E;
+      --muted-text: #64748B;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: #f4f5f7;
+      background: #F3F4F8;
+      color: var(--dark-text);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -40,34 +48,34 @@
 
     /* ── HEADER ── */
     .header {
-      background: #fff;
+      background: #FFFFFF;
       text-align: center;
       padding: 28px 16px 20px;
       border-bottom: 4px solid var(--lila);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.03);
     }
     .header h1 {
-      font-size: 2.6rem;
+      font-size: 2.5rem;
       font-weight: 900;
       color: var(--lila);
-      line-height: 1.05;
+      line-height: 1.08;
       letter-spacing: -0.5px;
-      text-shadow: 0 2px 10px rgba(90, 41, 130, 0.15);
     }
     .header p {
-      font-size: 0.9rem;
-      color: #888;
+      font-size: 0.95rem;
+      color: var(--muted-text);
       margin-top: 8px;
-      font-weight: 400;
+      font-weight: 500;
     }
 
     /* ── MAIN LAYOUT ── */
     .main-layout {
       display: flex;
       flex: 1;
-      max-width: 960px;
+      max-width: 980px;
       margin: 0 auto;
       width: 100%;
-      padding: 32px 20px 40px;
+      padding: 32px 20px 48px;
       gap: 32px;
       align-items: flex-start;
     }
@@ -75,210 +83,267 @@
     .col-busqueda { flex: 1; min-width: 0; }
 
     .card {
-      background: white;
-      border-radius: 16px;
-      padding: 24px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      background: #FFFFFF;
+      border-radius: 20px;
+      padding: 26px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      border: 1px solid rgba(0,0,0,0.04);
       position: relative;
     }
     .card-label {
-      font-size: 0.75rem;
-      font-weight: 700;
+      font-size: 0.8rem;
+      font-weight: 800;
       color: var(--lila);
       text-transform: uppercase;
       letter-spacing: 0.8px;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
     }
 
-    .input-group { display: flex; gap: 8px; }
+    .input-group { display: flex; gap: 10px; }
     .input-group input {
       flex: 1;
-      padding: 13px 16px;
-      border: 1.5px solid #ddd;
-      border-radius: 12px;
-      font-size: 1rem;
+      padding: 14px 18px;
+      border: 2px solid #E2E8F0;
+      border-radius: 14px;
+      font-size: 1.1rem;
+      font-weight: 600;
       font-family: inherit;
       outline: none;
-      transition: border-color 0.2s;
+      transition: all 0.2s;
     }
-    .input-group input:focus { border-color: var(--lila); }
+    .input-group input:focus {
+      border-color: var(--lila);
+      box-shadow: 0 0 0 3px rgba(90, 41, 130, 0.15);
+    }
     .input-group button {
-      padding: 13px 22px;
+      padding: 14px 26px;
       background: var(--lila);
       color: white;
       border: none;
-      border-radius: 12px;
-      font-size: 0.95rem;
-      font-weight: 700;
+      border-radius: 14px;
+      font-size: 1rem;
+      font-weight: 800;
       font-family: inherit;
       cursor: pointer;
-      transition: background 0.2s;
+      transition: background 0.2s, transform 0.1s;
       white-space: nowrap;
     }
     .input-group button:hover { background: var(--lila-osc); }
+    .input-group button:active { transform: scale(0.98); }
 
-    .hint { margin-top: 8px; font-size: 0.75rem; color: #999; }
+    .hint { margin-top: 10px; font-size: 0.8rem; color: #94A3B8; font-weight: 500; }
 
     /* ── LOADING & ERROR ── */
     #loading {
       display: none;
       text-align: center;
       padding: 24px 0 8px;
-      color: #888;
-      font-size: 0.9rem;
+      color: var(--muted-text);
+      font-size: 0.95rem;
+      font-weight: 600;
     }
     .spinner {
       display: inline-block;
-      width: 22px; height: 22px;
-      border: 3px solid #eee;
+      width: 24px; height: 24px;
+      border: 3px solid #E2E8F0;
       border-top-color: var(--lila);
       border-radius: 50%;
       animation: spin 0.7s linear infinite;
       vertical-align: middle;
-      margin-right: 8px;
+      margin-right: 10px;
     }
     @keyframes spin { to { transform: rotate(360deg); } }
 
     #error {
       display: none;
-      margin-top: 16px;
-      background: var(--lila-light);
-      border: 1.5px solid #e1bee7;
-      border-radius: 12px;
-      padding: 14px 16px;
-      color: var(--lila);
-      font-size: 0.9rem;
-      line-height: 1.4;
+      margin-top: 18px;
+      background: #FFF1F2;
+      border: 1.5px solid #FECDD3;
+      border-radius: 14px;
+      padding: 16px 18px;
+      color: #9F1239;
+      font-size: 0.92rem;
+      line-height: 1.5;
+      font-weight: 500;
     }
 
     /* ── RESULTADO ── */
-    #resultado { display: none; margin-top: 20px; }
-    .badge-secc {
-      display: inline-block;
-      background: var(--lila);
-      color: white;
-      font-size: 0.7rem;
-      font-weight: 700;
-      padding: 4px 12px;
-      border-radius: 20px;
-      letter-spacing: 0.5px;
-      margin-bottom: 14px;
-    }
+    #resultado { display: none; margin-top: 24px; }
+
     .result-header {
       display: flex;
       align-items: center;
-      gap: 12px;
-      margin-bottom: 18px;
-      padding-bottom: 14px;
-      border-bottom: 1px solid #eee;
+      gap: 14px;
+      margin-bottom: 16px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #F1F5F9;
     }
     .check-icon {
-      font-size: 1.8rem;
+      font-size: 2.2rem;
+      flex-shrink: 0;
     }
     .result-nombre {
-      font-size: 1.3rem;
+      font-size: 1.35rem;
       font-weight: 900;
-      color: #111;
-      line-height: 1.2;
+      color: #0F172A;
+      line-height: 1.25;
+      letter-spacing: -0.2px;
     }
     .result-cedula {
-      font-size: 0.82rem;
-      color: #888;
-      font-weight: 600;
-      margin-top: 2px;
+      font-size: 0.9rem;
+      color: #64748B;
+      font-weight: 700;
+      margin-top: 3px;
     }
 
-    .datos-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
+    /* BADGE PARTIDO */
+    .party-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.3px;
       margin-bottom: 16px;
     }
-    .dato {
-      background: #fbfbfd;
-      border: 1px solid #eef0f4;
-      border-radius: 12px;
-      padding: 12px 14px;
+    .party-anr { background: #FEE2E2; color: #991B1B; border: 1px solid #FCA5A5; }
+    .party-plra { background: #DBEAFE; color: #1E40AF; border: 1px solid #93C5FD; }
+    .party-multi { background: #F3E8FF; color: #6B21A8; border: 1px solid #D8B4FE; }
+    .party-none { background: #F1F5F9; color: #475569; border: 1px solid #CBD5E1; }
+
+    /* TARJETA DESTACADA: LOCAL DE VOTACIÓN (BIEN GRANDE) */
+    .hero-local-card {
+      background: linear-gradient(135deg, #FAF5FF 0%, #F5EEFC 100%);
+      border: 2px solid var(--lila-border);
+      border-radius: 18px;
+      padding: 20px;
+      margin-bottom: 18px;
+      box-shadow: 0 2px 10px rgba(90, 41, 130, 0.05);
+    }
+    .hero-local-header {
       display: flex;
       align-items: center;
-      gap: 10px;
-    }
-    .dato.full { grid-column: 1 / -1; }
-    .dato-icon { font-size: 1.2rem; }
-    .dato-content { flex: 1; }
-    .dato label {
-      display: block;
-      font-size: 0.65rem;
-      font-weight: 700;
-      color: #999;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 2px;
-    }
-    .dato span {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: #222;
-    }
-    .dato.full span {
-      font-size: 0.95rem;
-      font-weight: 700;
-      line-height: 1.4;
+      gap: 8px;
+      font-size: 0.75rem;
+      font-weight: 800;
       color: var(--lila);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 8px;
+    }
+    .hero-local-name {
+      font-size: 1.35rem;
+      font-weight: 900;
+      color: #3B0764;
+      line-height: 1.25;
+      margin-bottom: 8px;
+    }
+    .hero-local-sub {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #6B21A8;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      align-items: center;
+    }
+    .hero-local-sub .pill {
+      background: rgba(90, 41, 130, 0.08);
+      padding: 3px 10px;
+      border-radius: 8px;
     }
 
-    .alerta {
-      background: #fff8e1;
-      border: 1.5px solid #ffe082;
-      border-radius: 12px;
-      padding: 12px 14px;
-      font-size: 0.82rem;
-      color: #7c5f00;
+    /* GRID MESA Y ORDEN (GRANDES) */
+    .grid-kpis {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+    .kpi-box {
+      background: #FFFFFF;
+      border: 2px solid #E2E8F0;
+      border-radius: 16px;
+      padding: 16px;
+      text-align: center;
+      transition: all 0.2s;
+    }
+    .kpi-box:hover {
+      border-color: var(--lila);
+      box-shadow: 0 4px 12px rgba(90, 41, 130, 0.08);
+    }
+    .kpi-label {
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: #64748B;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+    .kpi-value {
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--lila);
+      line-height: 1;
+      letter-spacing: -0.5px;
+    }
+
+    /* ALERTA INFORMATIVA */
+    .alerta-rcp {
+      background: #FFFBEB;
+      border: 1.5px solid #FDE68A;
+      border-radius: 14px;
+      padding: 14px 16px;
+      font-size: 0.85rem;
+      color: #92400E;
       line-height: 1.5;
-      margin-bottom: 20px;
+      margin-bottom: 22px;
+      font-weight: 500;
     }
-    .alerta b { color: #5d4500; }
+    .alerta-rcp b { color: #78350F; }
 
-    /* BOTONES ACCIÓN */
+    /* BOTONES */
     .btns-resultado {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 12px;
     }
     .btn-wsp {
       width: 100%;
-      padding: 14px 16px;
+      padding: 16px 20px;
       background: var(--wsp-color);
       color: white;
       border: none;
-      border-radius: 12px;
-      font-size: 0.95rem;
-      font-weight: 700;
+      border-radius: 14px;
+      font-size: 1.05rem;
+      font-weight: 800;
       font-family: inherit;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      transition: background 0.2s;
-      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25);
+      gap: 10px;
+      transition: all 0.2s;
+      box-shadow: 0 4px 16px rgba(37, 211, 102, 0.3);
     }
-    .btn-wsp:hover { background: var(--wsp-hover); }
+    .btn-wsp:hover { background: var(--wsp-hover); transform: translateY(-1px); }
 
     .btn-nueva {
       width: 100%;
-      padding: 12px 16px;
-      background: #f0f0f0;
-      color: #555;
+      padding: 14px 18px;
+      background: #F1F5F9;
+      color: #475569;
       border: none;
-      border-radius: 12px;
-      font-size: 0.88rem;
+      border-radius: 14px;
+      font-size: 0.92rem;
       font-weight: 700;
       font-family: inherit;
       cursor: pointer;
       transition: background 0.2s;
     }
-    .btn-nueva:hover { background: #e0e0e0; }
+    .btn-nueva:hover { background: #E2E8F0; color: #1E293B; }
 
     /* ── COLUMNA CANDIDATA ── */
     .col-candidata {
@@ -287,50 +352,54 @@
     }
     .candidata-card {
       background: white;
-      border-radius: 20px;
+      border-radius: 24px;
       overflow: hidden;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.1);
+      box-shadow: 0 6px 30px rgba(0,0,0,0.08);
+      border: 1px solid rgba(0,0,0,0.04);
     }
     .candidata-card img {
       width: 100%;
       display: block;
     }
     .candidata-info {
-      padding: 16px 18px 20px;
+      padding: 18px 20px 24px;
       text-align: center;
       border-top: 4px solid var(--lila);
     }
-    .candidata-info .nombre-cand { font-size: 1.1rem; font-weight: 900; color: #111; }
-    .candidata-info .cargo { font-size: 0.76rem; color: #777; margin-top: 4px; font-weight: 600; }
+    .candidata-info .nombre-cand { font-size: 1.25rem; font-weight: 900; color: #0F172A; }
+    .candidata-info .cargo { font-size: 0.82rem; color: #64748B; margin-top: 4px; font-weight: 600; }
     .candidata-info .lista-badge {
       display: inline-block;
       background: var(--lila);
       color: white;
-      font-size: 0.72rem;
-      font-weight: 700;
-      padding: 5px 16px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      padding: 6px 18px;
       border-radius: 20px;
-      margin-top: 10px;
+      margin-top: 12px;
       letter-spacing: 0.5px;
+      box-shadow: 0 2px 8px rgba(90, 41, 130, 0.25);
     }
-    .candidata-info .partido { font-size: 0.7rem; color: #999; margin-top: 8px; line-height: 1.5; }
+    .candidata-info .partido { font-size: 0.75rem; color: #94A3B8; margin-top: 10px; font-weight: 600; }
 
     /* ── FOOTER ── */
     .site-footer {
-      background: #18141c;
-      color: #aaa;
+      background: #130E1A;
+      color: #94A3B8;
       text-align: center;
-      padding: 20px 16px;
-      font-size: 0.75rem;
+      padding: 24px 16px;
+      font-size: 0.8rem;
       letter-spacing: 0.3px;
-      line-height: 1.7;
+      line-height: 1.8;
     }
-    .site-footer strong { color: #fff; }
+    .site-footer strong { color: #FFFFFF; }
 
-    @media (max-width: 660px) {
+    @media (max-width: 768px) {
       .header h1 { font-size: 2.1rem; }
-      .main-layout { flex-direction: column; padding: 20px 16px 36px; gap: 20px; }
+      .main-layout { flex-direction: column; padding: 20px 16px 40px; gap: 24px; }
       .col-candidata { width: 100%; max-width: 320px; margin: 0 auto; order: -1; }
+      .hero-local-name { font-size: 1.2rem; }
+      .kpi-value { font-size: 1.9rem; }
     }
   </style>
 </head>
@@ -338,7 +407,7 @@
 
 <div class="header">
   <h1>¿Sabés<br>dónde votar?</h1>
-  <p>Ingresá tu cédula y encontrá tu mesa al instante</p>
+  <p>Consulta tu lugar de votación, mesa y orden — Padrón 2026</p>
 </div>
 
 <div class="main-layout">
@@ -348,18 +417,19 @@
       <p class="card-label">Consulta de padrón electoral</p>
       <div class="input-group">
         <input id="cedula-input" type="tel" inputmode="numeric"
-               placeholder="Ej: 1234567" maxlength="10" autocomplete="off" />
+               placeholder="Ej: 3641874" maxlength="10" autocomplete="off" />
         <button id="buscar-btn" onclick="buscar()">Buscar</button>
       </div>
-      <p class="hint">Solo el número, sin puntos ni guiones</p>
+      <p class="hint">Ingresá solo los números de tu cédula, sin puntos ni espacios</p>
     </div>
 
-    <div id="loading"><span class="spinner"></span>Buscando en el padrón...</div>
+    <div id="loading"><span class="spinner"></span>Consultando padrón electoral...</div>
     <div id="error"></div>
 
     <div id="resultado">
       <div class="card">
-        <span class="badge-secc" id="badge-secc"></span>
+        
+        <!-- Nombre y Cédula -->
         <div class="result-header">
           <div class="check-icon">✅</div>
           <div>
@@ -367,48 +437,57 @@
             <div class="result-cedula" id="cedula-disp"></div>
           </div>
         </div>
-        <div class="datos-grid">
-          <div class="dato">
-            <span class="dato-icon">🗳️</span>
-            <div class="dato-content"><label>Seccional</label><span id="seccion"></span></div>
+
+        <!-- Afiliación Política -->
+        <div id="party-container"></div>
+
+        <!-- LOCAL DE VOTACIÓN (BIEN GRANDE Y DESTACADO) -->
+        <div class="hero-local-card">
+          <div class="hero-local-header">
+            <span>🏫</span> LOCAL DE VOTACIÓN OFICIAL (RCP)
           </div>
-          <div class="dato">
-            <span class="dato-icon">📋</span>
-            <div class="dato-content"><label>Mesa</label><span id="mesa"></span></div>
-          </div>
-          <div class="dato">
-            <span class="dato-icon">🔢</span>
-            <div class="dato-content"><label>Orden</label><span id="orden"></span></div>
-          </div>
-          <div class="dato">
-            <span class="dato-icon">📅</span>
-            <div class="dato-content"><label>Fecha de Nac.</label><span id="fecha"></span></div>
-          </div>
-          <div class="dato full">
-            <span class="dato-icon">📍</span>
-            <div class="dato-content"><label>Local de Votación</label><span id="local"></span></div>
+          <div class="hero-local-name" id="local-nombre"></div>
+          <div class="hero-local-sub">
+            <span class="pill" id="local-zona"></span>
+            <span class="pill" id="local-seccional"></span>
           </div>
         </div>
-        <div class="alerta">
-          📍 Presentate el día de la votación en el local indicado.<br>
-          Llevá tu <b>cédula de identidad vigente o vencida</b>.
+
+        <!-- MESA Y ORDEN (GRANDES) -->
+        <div class="grid-kpis">
+          <div class="kpi-box">
+            <div class="kpi-label">🗳️ MESA</div>
+            <div class="kpi-value" id="mesa">-</div>
+          </div>
+          <div class="kpi-box">
+            <div class="kpi-label">🔢 ORDEN</div>
+            <div class="kpi-value" id="orden">-</div>
+          </div>
         </div>
+
+        <!-- ALERTA / INSTRUCCIONES -->
+        <div class="alerta-rcp">
+          📍 <b>Recomendación:</b> Acudí al local indicado con tu <b>cédula de identidad física (vigente o vencida)</b>. Recordá tu número de Mesa y Orden para votar con mayor rapidez.
+        </div>
+
+        <!-- BOTONES -->
         <div class="btns-resultado">
-          <button class="btn-wsp" id="btn-wsp">📲 Compartir por WhatsApp</button>
-          <button class="btn-nueva" onclick="nuevaBusqueda()">↩ Nueva búsqueda</button>
+          <button class="btn-wsp" id="btn-wsp">📲 Compartir mis datos por WhatsApp</button>
+          <button class="btn-nueva" onclick="nuevaBusqueda()">↩ Consultar otra cédula</button>
         </div>
+
       </div>
     </div>
   </div>
 
   <div class="col-candidata">
     <div class="candidata-card">
-      <img src="cynthia.jpg" alt="Cynthia Romero — Concejala Lista 1 Opción 17" />
+      <img src="cynthia.jpg" alt="Cynthia Romero — Candidata a Concejal de Asunción" />
       <div class="candidata-info">
         <div class="nombre-cand">Cynthia Romero</div>
         <div class="cargo">Candidata a Concejal de Asunción</div>
         <div class="lista-badge">Lista 1 · Opción 17</div>
-        <div class="partido">#CapitalResurge</div>
+        <div class="partido">#CapitalResurge · Camilo Intendente</div>
       </div>
     </div>
   </div>
@@ -416,8 +495,8 @@
 </div>
 
 <div class="site-footer">
-  <strong>Capital · Lista 1 · Opción 17</strong><br>
-  Camilo Intendente · Lista 1 · #CapitalResurge
+  <strong>Cynthia Romero · Candidata a Concejal de Asunción</strong><br>
+  Lista 1 · Opción 17 · #CapitalResurge
 </div>
 
 <script type="module">
@@ -427,10 +506,58 @@
   const SUPABASE_ANON = 'sb_publishable_l92oWb3HEaj_SMxwopsabw_hmZ5jpSC'
   const supabase = createClient(SUPABASE_URL, SUPABASE_ANON)
 
+  const LOCALES = {"1_8": "COL.NAC.CERRO CORA", "1_16": "ESC.RCA. ORIENTAL DEL URUGUAY", "1_17": "ESC.NAC. PROF. SILVIA MIRANDA", "1_23": "ESC.SUB. JOSE MARIA B. LASALLE", "1_27": "I.N.T.N.", "1_31": "ESC. GETSEMANI", "2_2": "COL.NAC.NTRA.SRA.DE LA ASUNCION", "2_13": "COL. PRIV. ALEMAN CONCORDIA", "2_30": "ESC.260 NTRA.S. DE LA ASUNCION", "3_11": "COL.NAC.VICENTE IGNACIO ITURBE", "3_13": "COL. PRIV. GOETHE", "3_19": "ESC.1ER.PTE.CONST.DEL PARAGUAY", "3_33": "COL.PRIV.SAGRADOS CORAZONES", "3_38": "SERV.NAC.DE PROMOCION PROMOCIONAL-SNPP", "4_8": "COL.NAC.CAP.PEDRO J.CABALLERO", "4_10": "COL. SUB. VILLA AURELIA", "4_21": "COL. SAN MARTIN", "5_19": "COLEGIO PRIVADO SAN ANDRES", "5_23": "COLEGIO SAN PIO X", "5_29": "COLEGIO REPUBLICA DE CUBA", "5_41": "ESC. ADELA SPERATTI", "6_17": "CLUB GENERAL GENES", "6_20": "COL. ALVARIN ROMERO", "6_22": "COL. NAC. RCA. DE PANAMA", "7_23": "ESC. NAC. RCA. DE CHILE", "7_31": "ESC.MILCIADES PIÑEIRO-EX ESC.PELLETIER", "7_33": "COL. SAN PEDRO Y SAN PABLO", "8_29": "COL. VERBO DIVINO", "8_30": "ESC.NAC.MANUEL ORTIZ GUERRERO", "9_32": "COL. GENERAL SANTOS", "9_40": "COL.PARROQ.VIRGEN DEL CARMEN", "10_3": "COL.PRIV.SAGR.CORAZON DE JESUS", "10_11": "COLEGIO SAN JOSE", "10_18": "ESCUELA REPUBLICA ARGENTINA", "10_33": "COL. PRIV. MARIA AUXILIADORA", "11_1": "COLEGIO NAC. PEDRO P. PEÑA", "11_2": "COL. SUB. SAN CLEMENTE MARIA", "11_36": "COL.VIRGEN DE LOS DOLORES", "12_8": "COLEGIO STA. T. DEL NIÑO JESUS", "12_9": "CENTRO EDUCATIVO JESUS", "12_17": "ESC.BAS. 206 PROF.MANUEL RIQUELME (EX", "12_30": "IGLESIA SAN VICENTE", "13_4": "UNIVERSIDAD CATOLICA-CAMPUS", "13_10": "LICEO PRIVADO 1RO. DE MARZO", "13_31": "COL. IGNACIO A. PANE", "14_8": "ESC.BASICA NRO 2 CELSA SPERATTI", "14_28": "COL.E.M.D.JUAN RAMON DAHLQUIST", "15_1": "COL. NAC. PDTE. FRANCO", "15_2": "COLEGIO DANTE ALIGHIERI", "15_12": "COLEGIO NAC. RCA. DEL BRASIL", "15_14": "COL.PRIVADO IBEROAMERICANO", "16_5": "ESC. NAC. DE COMERCIO NRO. 1", "16_6": "ESCUELA NACIONAL GRAL. DIAZ", "16_7": "COL.NAC.ASUNCION ESCALADA(EX NAC. DE", "16_12": "COLEGIO PERPETUO SOCORRO", "17_16": "COL.LA INMACULADA CONCEPCION", "17_22": "COLEGIO CRISTO REY", "18_3": "COL.NAC.E.M.D.NACIONES UNIDAS", "18_4": "COLEGIO SUB. S. ALFONSO", "18_13": "COL. JUAN MANUEL FRUTOS 370", "18_25": "COLEGIO SANTISIMO REDENTOR", "19_15": "COLEGIO NAC. FEDERICO CHAVEZ", "19_17": "COL. PRIV. DEL DIVINO MAESTRO", "19_21": "CAPILLA SAN FELIPE Y SANTIAGO", "20_6": "ESCUELA SAN VICENTE DE PAUL", "20_8": "COL.DR.G.RODRIGUEZ DE FRANCIA", "20_10": "COL. NACIONAL JOSE BERGES", "20_11": "COL. PRIV. MONSEÑOR LASAGNA", "20_13": "INMACULADO CORAZON DE MARIA", "20_23": "FACULTAD DE MEDICINA", "21_1": "COL.EXPERIM.PARAGUAY BRASIL-FAC.FILOSOFIA", "21_4": "COL.NAC. SAGRADO CORAZON DE JESUS", "21_7": "COL. PRIV. ALBERTO SCHWEITZER", "21_18": "FUN.MOLINOS HARIN.DEL PARAGUAY", "21_19": "ESC. SUB. SAN ANTONIO PADUA", "22_2": "ESC.DE COMERCIO NRO.3 RCA.PERU", "22_5": "COL.JOSE DE ANTEQUERA Y CASTRO", "22_20": "COL.POL.STA.CRUZ CIRILO DUARTE", "23_3": "COL.NAC. JUAN L. MALLORQUIN", "23_9": "ESCUELA SOTERO COLMAN", "24_2": "COL. YSATY", "24_7": "COL. POLITECNICO J. GUTENTBERG", "24_15": "LICEO NAC.GRAL.PATRICIO ESCOBAR", "24_16": "ESC. MAESTRO HERMINIO GIMENEZ", "24_18": "CENTRO EDUC. SAN PABLO", "24_26": "ESC. BLAS GARAY", "25_1": "ESC. NAC. MAURICIO JOSE TROCHE", "25_2": "ESC. NAC. SAN FRANCISCO", "25_3": "ESC. NAC. SAN PEDRO", "25_4": "COL. NAC. LAS RESIDENTAS", "26_14": "COL.NAC. CARLOS ANTONIO LOPEZ", "26_20": "COL. NAC.LAS MERCEDES - EX FELIPE TOLEDO", "26_35": "COL.NAC.VICENTE MONGELOS", "27_6": "COL.NA.MONSEÑOR JUAN S.BOGARIN-SAN BLAS", "27_22": "COL.PRIV.PARROQ. SAN AGUSTIN", "27_39": "COMPLEJO EDUC. MARIA AUXILIADORA", "28_1": "COL.NAC.JUANA MARIA DE LARA", "28_3": "COL.PRIV. SAGRADA FAMILIA", "28_9": "COL. NAC. EMILIO FERREIRA", "28_24": "ESC. SAN VICENTE DE PAUL", "28_26": "ESC.PRIV.STA. CATALINA LABOURE", "28_29": "CENTRO EDUC. SAN I. DE LOYOLA", "28_32": "ESC. CARLOS ANTONIO LOPEZ", "29_4": "COL.NAC.FRANCISCA ELOISA DUARTE", "29_7": "COL.E.M.D.SANTISIMA TRINIDAD", "29_21": "ESC.NAC.CENTEN.DE LA EPOP.NAC.", "30_10": "COL.PRIV.AMERICANO DE ASUNCION", "30_15": "COL.TEC. DE LAS AMERICAS/COL.PRIV.JUAN PABLO", "30_18": "ESC.NAC. RCA. FED. DE ALEMANIA", "31_28": "COL. TECNICO JAVIER", "32_14": "COLEGIO NAC. VIRGEN DE FATIMA", "32_22": "COLEGIO MARISCAL LOPEZ", "32_26": "COL.PRIV. NTRA.SRA. DEL HUERTO", "33_21": "COLEGIO REPUBLICA DE COLOMBIA", "33_24": "ESC. DIFERENCIAL MAXIMO ARELLANO", "33_34": "COL.NAC.DE COMERCIO 2", "34_7": "ESCUELA SANTA ANA", "35_27": "COLEGIO DELFIN CHAMORRO", "36_5": "COL.NAC.B. CABALLERO - C.N.C", "36_6": "COL.NAC.DR.FERNANDO DE LA MORA", "37_12": "ESC. JUAN DE ZALAZAR", "37_14": "COL. PRIV. VIRGEN DE NAZARETH", "38_6": "COL.SUB.MCAL.F.SOLANO LOPEZ", "38_28": "COL. ROBERTO L. PETIT", "39_1": "ESC. BETANIA", "39_24": "COL. EDUARDO LOPEZ MOREIRA", "39_34": "COL.SANTA MARIA", "40_4": "COL. PRIV.SAN CRISTOBAL", "40_9": "COL. LUIS ALBERTO DE HERRERA", "40_27": "COL. ROBERTO SHAERER", "41_5": "LIC.SANTISIMA TRINIDAD", "41_36": "ESC. MARANGATU RAPE", "42_12": "COL.NAC.RCA. DE VENEZUELA", "42_25": "ESC. ST. ANNEE SCHOOL", "43_3": "ESC. EUDORO CACERES", "43_5": "COL. PABLO L. AVILA", "43_19": "COL. PRIV. APOSTOLICO SAN JOSE", "43_25": "INSTIT.SUP. DE EDUCACION-ISE", "43_32": "COL. SAN FRANCISCO", "44_15": "ESCUELA DR. LEANDRO PRIETO", "44_20": "COLEGIO REPUBLICA DE HUNGRIA", "44_35": "VIRGEN STELA MARIS - ITA ENRAMADA", "45_16": "COL.SAN CAYET. DE FE Y ALEGRIA", "45_37": "ESC.PIACCENTINI"};
+
+  const SECCIONALES = {
+    1: "JAIME PEÑA", 2: "DR. FACUNDO INSFRAN", 3: "DR. ANGEL FLORENTIN", 4: "DR. EDUARDO LOPEZ MO",
+    5: "MAYOR BONIFACIO CABA", 6: "FULGENCIO R. MORENO", 7: "DIEGO BERINO", 8: "RAFAEL MEZA",
+    9: "DR. ANTOLIN IRALA", 10: "DR. GASPAR ANTOLIANO", 11: "DR. PEDRO P. PEÑA", 12: "GRAL BERNARDINO CABA",
+    13: "BERNARDINO RIQUELME", 14: "RICARDO BRUGADA", 15: "MAYOR JOSE V. GONZAL", 16: "DR. JUAN MANUEL FRUT",
+    17: "GRAL. EUGENIO A. GAR", 18: "CNEL. JUAN A. ESCURR", 19: "EMILIO V. DIAZ DE VI", 20: "AGUSTIN CARMELO CAND",
+    21: "DR. ANTOLIN SOSA", 22: "DR. JUAN LEON MALLOR", 23: "EDUARDO FLEITAS", 24: "DR. VICTOR BOETTNER",
+    25: "HIPOLITO SANCHEZ", 26: "SECCIONAL 26", 27: "SECCIONAL 27", 28: "SECCIONAL 28",
+    29: "SECCIONAL 29", 30: "SECCIONAL 30", 31: "SECCIONAL 31", 32: "SECCIONAL 32",
+    33: "SECCIONAL 33", 34: "SECCIONAL 34", 35: "SECCIONAL 35", 36: "SECCIONAL 36",
+    37: "SECCIONAL 37", 38: "SECCIONAL 38", 39: "SECCIONAL 39", 40: "SECCIONAL 40",
+    41: "SECCIONAL 41", 42: "CAPITAL 42", 43: "CAPITAL 43", 44: "ING. DON LUIS GONZAG",
+    45: "CAPITAL 45"
+  };
+
+  const ZONAS = {
+    1: "CATEDRAL", 2: "LA ENCARNACION", 3: "SAN ROQUE",
+    4: "LA RECOLETA", 5: "SANTISIMA TRINIDAD", 6: "ZEBALLOS CUE"
+  };
+
   const input   = document.getElementById('cedula-input')
   const btnBusc = document.getElementById('buscar-btn')
 
   input.addEventListener('keydown', e => { if (e.key === 'Enter') buscar() })
+
+  function getNombreLocal(secc, zona, local) {
+    if (!local) return 'Lugar de Votación por Asignar';
+    const keyS = `${secc}_${local}`;
+    if (LOCALES[keyS]) return LOCALES[keyS];
+    const keyZ = `${zona}_${local}`;
+    if (LOCALES[keyZ]) return LOCALES[keyZ];
+    return `Local Nº ${local}`;
+  }
+
+  function getNombreSeccional(secc) {
+    if (!secc || secc <= 0) return 'Sin Seccional (Independiente)';
+    const n = SECCIONALES[secc];
+    return n ? `Secc. ${secc} — ${n}` : `Seccional ${secc}`;
+  }
+
+  function getNombreZona(zona) {
+    if (!zona) return 'Capital';
+    const z = ZONAS[zona];
+    return z ? `Zona ${zona} — ${z}` : `Zona ${zona}`;
+  }
+
+  function formatCedula(c) {
+    if (!c) return '—';
+    return c.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  }
 
   window.buscar = async function () {
     const cedula = input.value.trim().replace(/\D/g, '')
@@ -453,7 +580,7 @@
 
       if (error || !data) {
         mostrarError(
-          `No se encontró la cédula <b>${cedula}</b> en el padrón electoral del Distrito Capital.<br><br>` +
+          `No se encontró la cédula <b>${formatCedula(cedula)}</b> en el padrón electoral del Distrito Capital.<br><br>` +
           'Verificá que el número esté bien escrito.'
         )
         return
@@ -462,49 +589,63 @@
     } catch (e) {
       document.getElementById('loading').style.display = 'none'
       btnBusc.disabled = false
-      mostrarError('Error de conexión. Verificá tu internet e intentá de nuevo.')
+      mostrarError('Error de conexión. Verificá tu conexión a internet e intentá de nuevo.')
     }
   }
 
   function mostrarResultado (d) {
-    const nombre = `${d.apellido ?? ''} ${d.nombre ?? ''}`.trim()
-    document.getElementById('badge-secc').textContent  = `Seccional ${d.seccion}`
-    document.getElementById('nombre').textContent      = nombre
-    document.getElementById('cedula-disp').textContent = `Cédula N° ${d.cedula}`
-    document.getElementById('seccion').textContent     = d.seccion
-    document.getElementById('mesa').textContent        = d.mesa
-    document.getElementById('orden').textContent       = d.orden
-    document.getElementById('fecha').textContent       = formatFecha(d.fecha_nac)
-    document.getElementById('local').textContent       = d.local_votacion ?? '—'
+    const nombreCompleto = `${d.nombre ?? ''} ${d.apellido ?? ''}`.trim() || `${d.apellido ?? ''} ${d.nombre ?? ''}`.trim()
+    const nombreLocal = getNombreLocal(d.seccional, d.zona, d.local)
+    const seccTexto = getNombreSeccional(d.seccional)
+    const zonaTexto = getNombreZona(d.zona)
+
+    document.getElementById('nombre').textContent      = nombreCompleto
+    document.getElementById('cedula-disp').textContent = `C.I. Nº ${formatCedula(d.cedula)}`
+    
+    // Afiliación política
+    const partyContainer = document.getElementById('party-container')
+    const partido = d.partido || (d.seccional ? 'ANR' : 'Sin Afiliación')
+    let partyClass = 'party-none'
+    let partyIcon = '⚪'
+    if (partido.includes('ANR') && partido.includes('PLRA')) {
+      partyClass = 'party-multi'
+      partyIcon = '🟣'
+    } else if (partido.includes('ANR')) {
+      partyClass = 'party-anr'
+      partyIcon = '🔴'
+    } else if (partido.includes('PLRA')) {
+      partyClass = 'party-plra'
+      partyIcon = '🔵'
+    }
+
+    partyContainer.innerHTML = `<span class="party-badge ${partyClass}">
+      ${partyIcon} ${partido === 'Sin Afiliación' ? 'Sin Afiliación Partidaria (Independiente)' : 'Afiliación: ' + partido}
+    </span>`
+
+    // Local grande
+    document.getElementById('local-nombre').textContent    = nombreLocal
+    document.getElementById('local-zona').textContent      = `📍 ${zonaTexto}`
+    document.getElementById('local-seccional').textContent = `🏛️ ${seccTexto}`
+
+    // Mesa y Orden
+    document.getElementById('mesa').textContent  = d.mesa ?? '—'
+    document.getElementById('orden').textContent = d.orden ?? '—'
+
     document.getElementById('resultado').style.display = 'block'
     document.getElementById('resultado').scrollIntoView({ behavior: 'smooth', block: 'start' })
-    document.getElementById('btn-wsp').onclick = () => compartirWsp(d)
+    document.getElementById('btn-wsp').onclick = () => compartirWsp(d, nombreCompleto, nombreLocal, seccTexto, partido)
   }
 
-  function formatFecha (raw) {
-    if (!raw) return '—'
-    // Convierte M/D/YYYY o MM/DD/YYYY o YYYY-MM-DD a DD/MM/YYYY (día/mes/año)
-    const m1 = raw.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/)
-    if (m1) {
-      const dia = m1[2].padStart(2, '0')
-      const mes = m1[1].padStart(2, '0')
-      return `${dia}/${mes}/${m1[3]}`
-    }
-    const m2 = raw.match(/^(\d{4})-(\d{2})-(\d{2})$/)
-    if (m2) return `${m2[3]}/${m2[2]}/${m2[1]}`
-    return raw
-  }
-
-  function compartirWsp (d) {
-    const nombre = `${d.apellido ?? ''} ${d.nombre ?? ''}`.trim()
+  function compartirWsp (d, nombre, local, secc, partido) {
     const texto =
-      `📍 *¿Dónde votar? - Cynthia Romero Lista 1 Opción 17*\n\n` +
-      `👤 *Nombre:* ${nombre}\n` +
-      `💳 *Cédula:* ${d.cedula}\n` +
-      `🗳️ *Seccional:* ${d.seccion}\n` +
-      `📋 *Mesa:* ${d.mesa}\n` +
-      `🔢 *Orden:* ${d.orden}\n` +
-      `🏫 *Local:* ${d.local_votacion}\n\n` +
+      `📍 *¿Dónde votar? - Cynthia Romero Concejal Lista 1 Opción 17*\n\n` +
+      `👤 *Elector:* ${nombre}\n` +
+      `💳 *Cédula:* ${formatCedula(d.cedula)}\n` +
+      `🚩 *Afiliación:* ${partido}\n` +
+      `🏫 *Local:* ${local}\n` +
+      `🗳️ *MESA:* ${d.mesa}\n` +
+      `🔢 *ORDEN:* ${d.orden}\n` +
+      `🏛️ *Seccional:* ${secc}\n\n` +
       `Consultá el tuyo aquí: ${location.href}`
     window.open('https://wa.me/?text=' + encodeURIComponent(texto), '_blank')
   }
